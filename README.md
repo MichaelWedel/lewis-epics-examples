@@ -1,11 +1,11 @@
 Simple Lewis EPICS examples
 ===========================
 
-This repository contains two examples for Lewis simulators with an EPICS interface. The first
+This repository contains two examples for [Lewis](https://github.com/DMSC-Instrument-Data/lewis) simulators with an EPICS interface. The first
 one simply adds an EPICS interface to the `SimulatedExampleMotor` from `lewis.examples`, while
 the second one is a bit more special, it's a simulated pet that has to be kept alive via EPICS.
 
-The features described here refer to Lewis version 1.0.2, in the current master branch or newer
+The features described here refer to Lewis [version 1.0.2](https://pypi.python.org/pypi/lewis/1.0.2), in the current master branch or newer
 releases these might be different.
 
 Installation
