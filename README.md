@@ -68,7 +68,7 @@ The pet
 This is a fun little example, it's a simulated pet in the computer that has certain needs that
 must be satisfied. Start it up:
 
-    $ lewis -r localhost -a . -k devices -p "epics: {prefix: 'Pet:'}" pet
+    $ lewis -a . -k devices -p "epics: {prefix: 'Pet:'}" pet
 
 Unlike other pets, it can only interact via EPICS! Start the simulation by naming the pet:
 
