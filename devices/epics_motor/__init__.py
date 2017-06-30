@@ -18,11 +18,11 @@
 # *********************************************************************
 
 from lewis.examples.example_motor import SimulatedExampleMotor
-from lewis.adapters.epics import EpicsAdapter, PV
+from lewis.adapters.epics import EpicsInterface, PV
 from lewis.core.utils import check_limits
 
 
-class ExampleMotorEpicsInterface(EpicsAdapter):
+class ExampleMotorEpicsInterface(EpicsInterface):
     pvs = {
         'Pos': PV('position', read_only=True, unit='mm', doc='Current position of the motor'),
         'Tgt': PV('target', meta_data_property='target_meta', unit='mm',

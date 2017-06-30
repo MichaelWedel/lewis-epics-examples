@@ -22,7 +22,7 @@ from collections import OrderedDict
 from lewis.core.statemachine import State
 from lewis.devices import StateMachineDevice
 
-from lewis.adapters.epics import EpicsAdapter, PV
+from lewis.adapters.epics import EpicsInterface, PV
 
 
 class ActionState(State):
@@ -219,7 +219,7 @@ class Pet(StateMachineDevice):
             self._name = new_name
 
 
-class PetEpicsInterface(EpicsAdapter):
+class PetEpicsInterface(EpicsInterface):
     """
     This is the EPICS interface to a simulated pet. Keep it happy by feeding it, tucking it in,
     whashing it and playing with it or it dies after a while.

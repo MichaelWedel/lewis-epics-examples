@@ -1,1 +1,1 @@
-lewis[epics]==1.0.2
+lewis[epics]==1.1.1

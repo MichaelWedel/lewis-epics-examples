@@ -5,7 +5,7 @@ This repository contains two examples for [Lewis](https://github.com/DMSC-Instru
 one simply adds an EPICS interface to the `SimulatedExampleMotor` from `lewis.examples`, while
 the second one is a bit more special, it's a simulated pet that has to be kept alive via EPICS.
 
-The features described here refer to Lewis [version 1.0.2](https://pypi.python.org/pypi/lewis/1.0.2), in the current master branch or newer
+The features described here refer to Lewis [version 1.1.1](https://pypi.python.org/pypi/lewis/1.1.1), in the current master branch or newer
 releases these might be different.
 
 Installation
@@ -15,7 +15,7 @@ Clone this repository:
 
     $ git clone https://github.com/MichaelWedel/lewis-epics-examples
 
-Install the requirements (lewis version 1.0.2) via pip, preferably in a virtual environment:
+Install the requirements (lewis version 1.1.1) via pip, preferably in a virtual environment:
 
     $ cd lewis-epics-examples
     $ pip install -r requirements.txt
@@ -28,7 +28,7 @@ The motor
 
 To start the motor:
 
-    $ lewis -a . -k devices epics_motor -- --prefix=Motor1:
+    $ lewis -a . -k devices -p "epics: {prefix: 'Motor1:'}" epics_motor
 
 The log output will give information about the PVs that are available. The simulation is very
 simple, when the `Motor1:Tgt` is set, the motor will automatically change state from `idle` to
@@ -42,7 +42,7 @@ for example the speed. The PV is limited between 0 and 10.
 Kill the motor simulation by pressing `CTRL+c`, and start it again with the control server
 activated:
 
-    $ lewis -r localhost:10000 -a . -k devices epics_motor -- --prefix=Motor1:
+    $ lewis -r localhost:10000 -a . -k devices -p "epics: {prefix: 'Motor1:'}" epics_motor
 
 This will start a control server that allows deep control of the simulation and the device via
 the `lewis-control` script:
@@ -68,7 +68,7 @@ The pet
 This is a fun little example, it's a simulated pet in the computer that has certain needs that
 must be satisfied. Start it up:
 
-    $ lewis -r localhost -a . -k devices pet -- -p Pet:
+    $ lewis -r localhost -a . -k devices -p "epics: {prefix: 'Pet:'}" pet
 
 Unlike other pets, it can only interact via EPICS! Start the simulation by naming the pet:
 
