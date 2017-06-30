@@ -19,7 +19,8 @@
 
 from lewis.examples.example_motor import SimulatedExampleMotor
 from lewis.adapters.epics import EpicsInterface, PV
-from lewis.core.utils import check_limits
+from lewis.core.utils import check_limits, dict_strict_update
+from lewis.core.exceptions import AccessViolationException
 
 
 class ExampleMotorEpicsInterface(EpicsInterface):
@@ -44,6 +45,9 @@ class ExampleMotorEpicsInterface(EpicsInterface):
     @target.setter
     @check_limits('target_lolim', 'target_hilim')
     def target(self, new_target):
+        if self.device.state != 'idle':
+            raise AccessViolationException('Can not change target while motor is moving.')
+
         self._device.target = new_target
 
     @property
@@ -52,6 +56,10 @@ class ExampleMotorEpicsInterface(EpicsInterface):
             'lolim': self.target_lolim,
             'hilim': self.target_hilim
         }
+
+    @target_meta.setter
+    def target_meta(self, new_target_meta):
+        pass
 
     @property
     def speed(self):
